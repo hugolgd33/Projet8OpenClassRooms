@@ -125,6 +125,15 @@ header {
 /* Gestion des fleches du carrousel */
 #banner .arrow {
 	position: absolute;
+	background: none;
+	cursor: pointer;
+	border: none;
+	transition: 0.3s;
+	transform:scale(1);
+}
+#banner .arrow:hover{
+	transition: 0.3s;
+	transform:scale(0.9);
 }
 #banner .arrow_left {
 	left: 10px;
