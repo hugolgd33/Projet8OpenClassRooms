@@ -2,8 +2,11 @@
 function slider() {
     const left = document.querySelector(".arrow_left");
     const right = document.querySelector(".arrow_right");
+	var dots = document.querySelector(".dots");
 	var bannerimg = document.querySelector(".banner-img");
 	var bannerp = document.querySelector(".banner-p");
+
+	/*Tab des img + p */
 	const slides = [
 		{
 			"image":"slide1.jpg",
@@ -23,12 +26,21 @@ function slider() {
 		}
 	];
 	var active = 0;
+	slides.forEach((nmb) => {
+		var newDot = document.createElement('div');
+   		newDot.id = 'd'+nmb;
+   		newDot.className = 'dot';
+		dots.appendChild(newDot);
+	});
+	/* Fonction du changement */
 	function elementschange(){
 		bannerimg.src = "./assets/images/slideshow/"+slides[active]["image"];
 		bannerp.innerHTML = slides[active]["tagLine"];
 	}
+
+	/* Flèche gauche cliquée */
 	left.onclick = () => {
-		if (active < 3){
+		if (active < slides.length-1){
 		active = active + 1;
 		elementschange();	
 		}
@@ -37,15 +49,19 @@ function slider() {
 			elementschange();
 		};
 	};
+
+	/* Flèche droite cliquée */
 	right.onclick = () => {
 		if (active > 0){
 		active = active - 1;
 		elementschange();
 		}
 		else{
-			active=3;
+			active = slides.length-1;
 			elementschange();
 		};
 	};	
 };
+
+/* lorsque le body du html est chargé */
 document.body.onload = slider();
