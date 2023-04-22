@@ -2,9 +2,9 @@
 function slider() {
     const left = document.querySelector(".arrow_left");
     const right = document.querySelector(".arrow_right");
-	var dots = document.querySelector(".dots");
 	var bannerimg = document.querySelector(".banner-img");
 	var bannerp = document.querySelector(".banner-p");
+	var dots = document.querySelector(".dots");
 	var newdotab=[];
 
 	/*Tab des img + p */
@@ -40,6 +40,9 @@ function slider() {
 
 	
 	var active = 0;
+	var activdot = document.getElementById(active);
+	activdot.classList.add('dot_selected');
+	
 	/* Fonction du changement */
 	function elementschange(){
 		bannerimg.src = "./assets/images/slideshow/"+slides[active]["image"];
@@ -48,7 +51,6 @@ function slider() {
 			var activdot = document.getElementById(nmb);
 			console.log(newdotab[nmb])
 			if (newdotab[nmb] == active){
-				 activdot = document.getElementById(nmb);
 				 activdot.classList.add('dot_selected');
 			}
 			else{
